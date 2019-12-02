@@ -8,7 +8,7 @@ Criação de uma aplicação em node do curso GoStack da Rocktseat na parte de a
 1. Clone o repositório: `git clone git@github.com:BrunoCesarAngst/creating-node-application.git`
 2. Instalar pacotes: `npm install ou yarn`
 3. Rodar: `node index.js`
-4. Acesse o browser: `http://localhost:3000/teste`
+4. Acesse o browser: `http://localhost:3000/users`
 
 ### Comandos dados para a criação da aplicação:
 
