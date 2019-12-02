@@ -5,7 +5,13 @@
   "repository": "git@github.com:BrunoCesarAngst/creating-node-application.git",
   "author": "brunocesarangst <bruno.angst@rede.ulbra.br>",
   "license": "MIT",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.1"
   }
 }
