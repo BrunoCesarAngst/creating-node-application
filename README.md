@@ -49,6 +49,6 @@ Criação de uma aplicação em node do curso GoStack da Rocktseat na parte de a
 
 Criamos o arquivo *index.js*, que é a nossa porta de entrada da nossa aplicação e começamos a trabalher dentro dele.
 
-Nessa aplicação os dados estão sendo armazenados dentro de um Array, dentro do própio arquivo index.js, ou seja, 
+Nessa aplicação os dados estão sendo armazenados dentro de um Array, dentro do própio arquivo index.js, ou seja, não será salva as alterações, não persistindo os dados nas atualizações.
 
 `yarn add nodemon -D` para automatizar o processo de reinicialização do servidor a cada alteração no modo de desenvolvimento -D
