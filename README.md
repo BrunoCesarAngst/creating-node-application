@@ -12,6 +12,7 @@ Criação de uma aplicação em node do curso GoStack da Rocktseat na parte de a
 5. Acesse o browser: `http://localhost:3000/users`.
 6. Abra o software de teste de rotas.
 7. Crie a primeira requisição tipo "Mostrar todos usuários" com o método GET, no endereço http://localhost:3000/users
+![mostrando todos os usuários](https://github.com/BrunoCesarAngst/creating-node-application/blob/master/images/mostrando%20todos%20os%20usu%C3%A1rios%20imagem%20de%2002-dezembro-2019%20as%2022:28:21%20em%20uma%20segunda%20da%20semana%2049.png "mostrando todos os usuários")
 7. Crie outra requisição tipo "Mostrar um usuário" com o método GET, no endereço http://localhost:3000/users/users/1
 
 ### Comandos dados para a criação da aplicação:
