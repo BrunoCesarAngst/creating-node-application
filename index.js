@@ -8,6 +8,9 @@ const server = express();
 // o use faz um ligação entre a estancia server com o modulo express.json().
 server.use(express.json());
 
+// 9º Criando um tipo de armazenamento e esse, uma variável no mesmo arquivo
+const users = ['Breno', 'Micaela', 'Margarete', 'Bruno'];
+
 /**
  * 4º Criamos uma primeira rota.
  * Criamos o método get por ser possível visualizar no navegador, pois, esse é o
@@ -51,9 +54,6 @@ server.use(express.json());
 //   // usando template strings.
 // });
 
-// 9º Criando um tipo de armazenamento e esse, uma variável no mesmo arquivo
-// const users = ['Breno', 'Micaela', 'Margarete', 'Bruno'];
-
 // server.get('/users/:index', (req, res) => {
 //   // dá para simplificar com desestruturação do ECMA6 assim:
 //   const { index } = req.params;
@@ -61,9 +61,40 @@ server.use(express.json());
 //   return res.json(users[index]);
 // });
 
-// 10º CRUD - Create, Read, Update, Delete
+// 15º Middleware global
+server.use((req, res, next) => {
+  // para calcular o tempo de instrução de código junto com timeEnd.
+  console.time('Request');
+  // um middleware de log
+  console.log(`Método: ${req.method}; URL: ${req.url}`);
 
-const users = ['Breno', 'Micaela', 'Margarete', 'Bruno'];
+  next();
+  console.timeEnd('Request');
+});
+
+// 16º Middlewares locais
+function checkUserExist(req, res, next) {
+  // procura a existência do nome no corpo da requesição.
+  if (!req.body.name) {
+    return res.status(400).json({ error: 'User name is required!' });
+  }
+
+  return next();
+}
+
+function checkUserInArray(req, res, next) {
+  const user = users[req.params.index];
+
+  if (!user) {
+    return res.status(400).json({ error: 'User does not exists!' });
+  }
+
+  req.user = user;
+
+  return next();
+}
+
+// 10º CRUD - Create, Read, Update, Delete
 
 // mostra todos os usuários
 server.get('/users', (req, res) => {
@@ -71,15 +102,12 @@ server.get('/users', (req, res) => {
 });
 
 // mostra um usuário
-server.get('/users/:index', (req, res) => {
-  // dá para simplificar com desestruturação do ECMA6 assim:
-  const { index } = req.params;
- 
-  return res.json(users[index]);
+server.get('/users/:index', checkUserInArray, (req, res) => {
+  return res.json(req.user);
 });
 
 // 11º cria um novo usuário
-server.post('/users', (req, res) => {
+server.post('/users', checkUserExist, (req, res) => {
   const { name } = req.body;
 
   users.push(name);
@@ -88,7 +116,7 @@ server.post('/users', (req, res) => {
 });
 
 // 13º alterando um usuário
-server.put('/users/:index', (req, res) => {
+server.put('/users/:index', checkUserInArray, checkUserExist, (req, res) => {
   const { index } = req.params;
   const { name } = req.body;
 
@@ -98,7 +126,7 @@ server.put('/users/:index', (req, res) => {
 });
 
 // 14º deletando um usuário
-server.delete('/users/:index', (req, res) => {
+server.delete('/users/:index', checkUserInArray, (req, res) => {
   const { index } = req.params;
 
   users.splice(index, 1);
