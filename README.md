@@ -3,7 +3,7 @@ Criação de uma aplicação em node do curso GoStack da Rocktseat na parte de a
 
 ## Instalação
 
-É necessário ter o nodejs instalado e o yarn ou npm.
+É necessário ter instalado o [node.js](https://github.com/nvm-sh/nvm), [yarn](https://yarnpkg.com/en/docs/install) ou npm. Eu estou usando yarn.
 
 1. Instalar algum software para testar as rotas post, put e delete, como [Postman](https://www.getpostman.com/) ou [Insomnia](https://insomnia.rest/). Eu estou usando o Insomnia.
 2. Clone o repositório: `git clone git@github.com:BrunoCesarAngst/creating-node-application.git`.
